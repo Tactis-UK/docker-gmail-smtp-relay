@@ -9,7 +9,7 @@ cd docker-o365-smtp-relay/
 docker build -t o365-smtp-relay .
 
 # Start docker container (--detach to run in background) 
-docker run --detach -i -t --restart unless-stopped \
+docker run --detach --restart unless-stopped \
 	-p 25:25 \
 	-e SYSTEM_TIMEZONE="America/Chicago" \
 	-e MYNETWORKS="10.0.0.0/8 192.168.0.0/16 172.16.0.0/12" \

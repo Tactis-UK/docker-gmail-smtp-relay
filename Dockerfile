@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER Lyle Scott, III "lyle@digitalfoo.net"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -16,9 +16,8 @@ apt-get -q -y install \
     ca-certificates \
     libsasl2-modules && \
 # main.cf
-#postconf -e relayhost=[smtp.gmail.com]:587 && \
 postconf -e smtpd_banner="\$myhostname ESMTP" && \
-postconf -e relayhost=[SMTP.office365.com]:587 && \
+postconf -e relayhost=[smtp-relay.gmail.com]:587 && \
 postconf -e smtp_sasl_auth_enable=yes && \
 postconf -e smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd && \
 postconf -e smtp_sasl_security_options=noanonymous && \
